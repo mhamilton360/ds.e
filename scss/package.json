@@ -17,18 +17,13 @@
     "build": "node src/scripts/build.js",
     "dev": "nodemon --watch src --exec yarn build -e scss"
   },
-  "lint-staged": {
-    "*.scss": "yarn lint:fix"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.scss": "yarn lint:fix"
   },
   "devDependencies": {
     "husky": "^8.0.3",
